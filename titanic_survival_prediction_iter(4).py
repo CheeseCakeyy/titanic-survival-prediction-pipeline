@@ -10,7 +10,7 @@ from xgboost import XGBClassifier
 from sklearn.model_selection import StratifiedKFold,cross_val_score
 
 
-train_path = "C:/Users/Adwait Tagalpallewar/Desktop/datasets/titanic/train.csv"
+train_path = "data/train.csv"
 train_df = pd.read_csv(train_path)
 
 print(train_df.head())
@@ -90,7 +90,7 @@ Rise in Recall and Precision was also observed making the precision recall trade
 #-------------------
 '''Submission CSV-1 iter(4)'''
 #-------------------
-test_path = "C:/Users/Adwait Tagalpallewar/Desktop/datasets/titanic/test.csv"
+test_path = "data/test.csv"
 test_df = pd.read_csv(test_path)
 
 X_test = feature_creation(test_df)
@@ -119,3 +119,4 @@ submission.to_csv("Submission1_iter(4).csv",index=False) #0.7751
 '''Gradient boosting initially outperformed Random Forest in cross-validation, 
 feature simplification reduced data complexity, allowing Random Forest to generalize better 
 and achieve the highest test performance.'''
+
