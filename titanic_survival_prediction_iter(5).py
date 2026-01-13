@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score,accuracy_score
 
 
-train_path = "C:/Users/Adwait Tagalpallewar/Desktop/datasets/titanic/train.csv"
+train_path = "data/train.csv"
 train_df = pd.read_csv(train_path)
 
 print(train_df.head())
@@ -170,3 +170,34 @@ final_y_pred = (final_prob > 0.5).astype(int)
 print(accuracy_score(y_validate,final_y_pred)) #0.8268
 print(f1_score(y_validate,final_y_pred)) #0.739
 
+
+#--------------
+'''Submission CSV1 iter 5'''
+#--------------
+test_path = "data/test.csv"
+test_df = pd.read_csv(test_path)
+
+X_test = feature_creation(test_df)
+print(X_test.head())
+
+#test
+LR_pipeline.fit(X,y)
+RF_pipeline.fit(X,y)
+XGB_pipeline.fit(X,y)
+
+LR_prob = LR_pipeline.predict_proba(X_test)[:,1] 
+RF_prob = RF_pipeline.predict_proba(X_test)[:,1]
+XGB_prob = XGB_pipeline.predict_proba(X_test)[:,1]
+
+y_test_prob = (
+    (0.40 * LR_prob) + (0.33 * RF_prob) + (0.27 * XGB_prob)
+)
+
+y_test_pred = (y_test_prob > 0.5).astype(int)
+
+submission = pd.DataFrame({
+    'PassengerId' : test_df['PassengerId'],
+    'Survived' : y_test_pred
+})
+
+submission.to_csv('submission_iter5.csv',index=False) #0.78708 same score as randomforest alone
