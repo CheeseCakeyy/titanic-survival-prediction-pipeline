@@ -11,7 +11,7 @@ This project focuses on building a **clean, well-evaluated machine learning pipe
 Rather than leaderboard chasing, the emphasis is on:
 
 - Sound preprocessing
-- Feature engineering with intuition
+- Feature engineering with intuition and domain knowledge
 - Proper validation discipline
 - Responsible ensembling
 - Understanding model behavior and limitations
