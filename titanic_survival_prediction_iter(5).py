@@ -200,4 +200,5 @@ submission = pd.DataFrame({
     'Survived' : y_test_pred
 })
 
-submission.to_csv('submission_iter5.csv',index=False) #0.78708 same score as randomforest alone
+submission.to_csv('submission_iter5.csv',index=False) #0.78708 
+
